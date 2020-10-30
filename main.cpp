@@ -1,9 +1,8 @@
-//syntax checker should have one instance of the stack
 #include "SyntaxChecker.h"
 #include "Stack.h"
 #include <iostream>
 #include <fstream>
-
+//syntax checker should have one instance of the stack
 using namespace std;
 
 int main (int argc, char **argv){
@@ -13,6 +12,5 @@ int main (int argc, char **argv){
   cin >> input;
 
   ifstream readInput(input);
-
   sc.CheckSyntax();
 }

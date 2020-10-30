@@ -8,6 +8,9 @@ using namespace std;
 
 SyntaxChecker::SyntaxChecker(){
   //vacant space atm
+  //stack = new Stack<char>*;
+
+  //Stack <char> *stack = new Stack <char>();
 }
 
 SyntaxChecker::~SyntaxChecker(){
@@ -17,21 +20,29 @@ SyntaxChecker::~SyntaxChecker(){
 void SyntaxChecker::CheckSyntax(){
   delimiter = 0;
   lineCount = 0;
+  char fixThisCode;
 
-  stack = new Stack<char>*; //cplusplus.com
+//  Stack <char> stack;
   string line; //http://www.cplusplus.com/forum/lounge/52458/ for this line, the next if/else statement and next while loop
   ifstream source;
+//  Stack <char> stack;
+  fixThisCode.Stack = stack;
   source.open(fileInput);
 
-  if(source.is_open()){ //Acting as a try/catch - Try part
-    while(source.good()){ ////http://www.cplusplus.com/forum/lounge/52458/
-      getline(source, line); //http://www.cplusplus.com/forum/lounge/52458/
+  if(source.is_open()){ //Acting as my try/catch - Try part
+    while(source.good()){
+      getline(source, line);
       lineCount++;
       for(int x; x < line.length(); ++x){
         char y = line[x];
         if(y == '(' || y == '{'||y == '['){
-          stack.push(y);
-          delimiter++;
+          if(stack.isFull()){
+            //resize Method
+          }
+          else{
+            stack.push(y);
+            delimiter++;
+          }
         }
 
         else if(y == ')' || y == '}'||y == ']'){
@@ -52,14 +63,16 @@ void SyntaxChecker::CheckSyntax(){
             }
 
             else{
-            stack.pop();
-            delimiter--;
+              stack.pop();
+              delimiter--;
             continue;
             }
           }
 
           else{
-            cout << "FILE HAS NO OPENING DELIMITERS" << endl;
+            cout << "FILE IS MISSING OPENING DELIMITERS" << endl;
+            cout << "RECHECK FILE AND RESTART" << endl;
+            source.close();
           }
         }
       }
@@ -82,5 +95,6 @@ void SyntaxChecker::CheckSyntax(){
   else{ //"Catch" end of try/catch
     cout << "COULD NOT OPEN FILE" << endl;
     cout << "RESTART WITH DIFFERNT FILE INPUT" << endl;
+    source.close();
   }
 }

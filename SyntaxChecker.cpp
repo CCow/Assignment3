@@ -25,8 +25,8 @@ void SyntaxChecker::CheckSyntax(){
   source.open(fileInput);
 
   if(source.is_open()){ //Acting as a try/catch - Try part
-    while(source.good()){
-      getline(source, line);
+    while(source.good()){ ////http://www.cplusplus.com/forum/lounge/52458/
+      getline(source, line); //http://www.cplusplus.com/forum/lounge/52458/
       lineCount++;
       for(int x; x < line.length(); ++x){
         char y = line[x];

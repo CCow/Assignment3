@@ -8,8 +8,6 @@ class SyntaxChecker{
     SyntaxChecker();
     ~SyntaxChecker();
 
-
-
     void CheckSyntax();
 
   private:

@@ -11,8 +11,9 @@ int main (int argc, char **argv){
   string input;
 
   cout << "Input File for Syntax Checking: " << endl;
-  cin << input;
+  cin >> input;
 
+  ifstream readInput(input);
 
-  //sc.CheckSyntax();
+  sc.CheckSyntax();
 }

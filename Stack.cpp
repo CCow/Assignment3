@@ -3,14 +3,14 @@
 //default constructor
 template <class T> // found on https://www.geeksforgeeks.org/templates-cpp/ (template <class T> is declared before every class to broaden input types)
 Stack<T>::Stack(){ // Stack <T> - <T> represents template and will take in not just one data type but all appropiate primitives
-  myArray = new char[128];
+  myArray = new T[128];
   mSize = 128;
   top = -1;
 }
 
 template <class T>
 Stack<T>::Stack(int maxSize){
-  myArray = new char[maxSize];
+  myArray = new T[maxSize];
   mSize = maxSize;
   top = -1;
 }
@@ -34,7 +34,7 @@ T Stack<T>::pop(){
   //check if empty before proceeding
   if(isEmpty()){
     cout << "ERROR: Stack is empty" << endl;
-    return '\0';
+    return 0;
   }
   return myArray[top--];
 }

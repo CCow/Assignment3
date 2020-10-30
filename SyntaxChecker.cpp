@@ -7,22 +7,27 @@
 using namespace std;
 
 SyntaxChecker::SyntaxChecker(){
+  //vacant space atm
+  //stack = new Stack<char>*;
 
-
+  //Stack <char> *stack = new Stack <char>();
 }
 
 SyntaxChecker::~SyntaxChecker(){
-  //  delete;
+  //  delete nothing
 }
 
 void SyntaxChecker::CheckSyntax(){
   delimiter = 0;
   lineCount = 0;
 
-  Stack <char> stack;
+//  Stack <char> stack;
   string line; //http://www.cplusplus.com/forum/lounge/52458/ for this line, the next if/else statement and next while loop
   ifstream source;
+  Stack <char> stack;
+  //->Stack = stack;
   source.open(fileInput);
+
   if(source.is_open()){ //Acting as a try/catch - Try part
     while(source.good()){
       getline(source, line);
@@ -33,31 +38,60 @@ void SyntaxChecker::CheckSyntax(){
           stack.push(y);
           delimiter++;
         }
+
         else if(y == ')' || y == '}'||y == ']'){
           if(stack.isEmpty() == false){
-            /*if(){
-            }
-            else{
-              delimiter--;
+            if(y == ')' && stack.peek() != '('){
+              cout << "ERROR: ')' MISSING ON LINE: " << lineCount << endl;
               source.close();
-            }*/
+            }
+
+            else if(y == '}' && stack.peek() != '{'){
+              cout << "ERROR: '}' MISSING ON LINE: " << lineCount << endl;
+              source.close();
+            }
+
+            else if(y == ']' && stack.peek() != '['){
+              cout << "ERROR: ']' MISSING ON LINE: " << lineCount << endl;
+              source.close();
+            }
+
+            else{
+            stack.pop();
+            delimiter--;
+            continue;
+            }
           }
+
           else{
             cout << "FILE IS MISSING OPENING DELIMITERS" << endl;
           }
-
         }
+
         else{
-
-
+          cout << "" << endl;
+          stack.~Stack();
+          source.close();
         }
-
       }
     }
+    if(stack.isEmpty()){
+      cout << "SYNTAX CHECK COMPLETE, DELIMITER SYNTAX IS CORRECT" << endl;
+      cout << "( +/- ) Delimiters: " << delimiter << endl;
+      stack.~Stack();
+      source.close();
+    }
+
+    else{
+      cout << "REACHED END OF FILE: MISSING '}' DELIMITER" << endl;
+      cout<< "( +/- ) Delimiters: " << delimiter << endl;
+      stack.~Stack();
+      source.close();
+    }
   }
+
   else{ //"Catch" end of try/catch
     cout << "COULD NOT OPEN FILE" << endl;
     cout << "RESTART WITH DIFFERNT FILE INPUT" << endl;
   }
-  source.close();
 }

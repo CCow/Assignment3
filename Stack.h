@@ -20,7 +20,7 @@ class Stack{
     int getSize();
 
   private:
-    T *myArray;
+    T *myArray; //char becomes T
 
     int top;
     int mSize;

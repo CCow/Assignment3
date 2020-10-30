@@ -1,4 +1,4 @@
-# Assignment3 - SyntaxChecker
+# Assignment3 - SyntaxChecker ~~~ I'd like to use a late day for this assignment ~~~
 Connor Cowher 2322777
 
 

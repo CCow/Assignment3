@@ -8,9 +8,6 @@ using namespace std;
 
 SyntaxChecker::SyntaxChecker(){
   //vacant space atm
-  //stack = new Stack<char>*;
-
-  //Stack <char> *stack = new Stack <char>();
 }
 
 SyntaxChecker::~SyntaxChecker(){
@@ -21,11 +18,10 @@ void SyntaxChecker::CheckSyntax(){
   delimiter = 0;
   lineCount = 0;
 
-//  Stack <char> stack;
+  stack = new Stack<char>*;
   string line; //http://www.cplusplus.com/forum/lounge/52458/ for this line, the next if/else statement and next while loop
   ifstream source;
   Stack <char> stack;
-  //->Stack = stack;
   source.open(fileInput);
 
   if(source.is_open()){ //Acting as a try/catch - Try part
@@ -64,14 +60,8 @@ void SyntaxChecker::CheckSyntax(){
           }
 
           else{
-            cout << "FILE IS MISSING OPENING DELIMITERS" << endl;
+            cout << "FILE HAS NO OPENING DELIMITERS" << endl;
           }
-        }
-
-        else{
-          cout << "" << endl;
-          stack.~Stack();
-          source.close();
         }
       }
     }

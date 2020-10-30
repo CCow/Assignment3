@@ -9,7 +9,6 @@ using namespace std;
 int main (int argc, char **argv){
   SyntaxChecker sc;
   string input;
-
   cout << "Input File for Syntax Checking: " << endl;
   cin >> input;
 

@@ -18,10 +18,9 @@ void SyntaxChecker::CheckSyntax(){
   delimiter = 0;
   lineCount = 0;
 
-  stack = new Stack<char>*;
+  stack = new Stack<char>*; //cplusplus.com
   string line; //http://www.cplusplus.com/forum/lounge/52458/ for this line, the next if/else statement and next while loop
   ifstream source;
-  Stack <char> stack;
   source.open(fileInput);
 
   if(source.is_open()){ //Acting as a try/catch - Try part

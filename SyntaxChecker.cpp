@@ -90,6 +90,10 @@ void SyntaxChecker::CheckSyntax(){ //Method to check file input's syntax
         //stack.~Stack;
         source.close();
       }
+      else{
+        cout << "Would you like to check another file (y/n): ";
+        cin >> yesNo;
+      }
     }
 
     else{
